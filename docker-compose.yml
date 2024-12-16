@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # Laravel backend
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_app
+    volumes:
+      - .:/var/www/html
+      - /var/www/html/node_modules # Исключаем node_modules из локальной синхронизации
+    ports:
+      - "8080:80" # Laravel доступен на порту 8080
+    networks:
+      - laravel_network
+    depends_on:
+      - db
+
+  # MySQL база данных
+  db:
+    image: mysql:8.0
+    container_name: laravel_db
+    environment:
+      MYSQL_DATABASE: laravel_db
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: laravel_user
+      MYSQL_PASSWORD: secret
+    ports:
+      - "3308:3306"
+    networks:
+      - laravel_network
+    volumes:
+      - dbdata:/var/lib/mysql
+
+  # Vite Dev Server для Vue
+  vite:
+    image: node:20
+    container_name: vite_dev_server
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html # Синхронизация файлов проекта
+    command: npm run dev # Запускаем Vite в режиме разработки
+    ports:
+      - "5173:5173" # Порт для Vite Dev Server
+    networks:
+      - laravel_network
+    depends_on:
+      - app
+
+networks:
+  laravel_network:
+
+volumes:
+  dbdata:

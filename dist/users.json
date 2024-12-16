@@ -1,0 +1,37 @@
+[
+    {
+        "name": "user1",
+        "email": "user1@user.ru",
+        "password": "user1@user.ru"
+    },
+    {
+        "name": "user2",
+        "email": "user2@user.ru",
+        "password": "user2@user.ru"
+    },
+    {
+        "name": "Alex",
+        "email": "alekseyseyrol@mail.ru",
+        "password": "alekseyseyrol@mail.ru"
+    },
+    {
+        "name": "User",
+        "email": "user1@user.ru",
+        "password": "user1@user.ru"
+    },
+    {
+        "name": "dfsdg",
+        "email": "admin1@yemorkovin.ru",
+        "password": "admin1@yemorkovin.ru"
+    },
+    {
+        "name": "sdgfsdg",
+        "email": "afasf@afaf.ti",
+        "password": "afasf@afaf.ti"
+    },
+    {
+        "name": "dsgfsdg",
+        "email": "sdg@sdgsg.ru",
+        "password": "sdg@sdgsg.ru"
+    }
+]
